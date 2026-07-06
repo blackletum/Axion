@@ -25,7 +25,6 @@ void CImGuiViewport::Initialize()
 {
     m_iGotAllMOTD = true;
     m_szServerName[0] = '\0';
-    m_iCurrentMenu = 0;
 }
 
 void CImGuiViewport::ShowScoreBoard()
@@ -45,22 +44,6 @@ void CImGuiViewport::HideScoreBoard()
         return;
 
     g_iScoreboard.m_ShowScore = false;
-}
-
-bool CImGuiViewport::AllowedToPrintText()
-{
-	if( g_iPlayerClass == 0 )
-	{
-		if( m_iCurrentMenu == MENU_TEAM ||
-			m_iCurrentMenu == MENU_CLASS ||
-			m_iCurrentMenu == MENU_INTRO ||
-			m_iCurrentMenu == MENU_CLASSHELP )
-		{
-			return false;
-		}
-	}
-
-	return true;
 }
 
 void CImGuiViewport::CreateTextWindow( int iTextToShow )
@@ -111,8 +94,6 @@ void CImGuiViewport::ShowIMGUIMenu( int iMenu )
     if( gHUD.m_iIntermission && iMenu != MENU_INTRO )
         return;
 
-    m_iCurrentMenu = iMenu;
-
     switch ( iMenu )
 	{
 	case MENU_TEAM:		
@@ -136,7 +117,6 @@ void CImGuiViewport::ShowIMGUIMenu( int iMenu )
 
 void CImGuiViewport::HideIMGUIMenu()
 {
-    m_iCurrentMenu = 0;
     g_iMOTD.m_ShowMOTD = false;
 }
 

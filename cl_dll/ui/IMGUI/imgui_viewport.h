@@ -66,8 +66,6 @@ public:
     bool IsScoreBoardVisible();
     void HideScoreBoard();
 
-    bool AllowedToPrintText( void );
-
     void CreateTextWindow( int iTextToShow );
 
 	void ShowIMGUIMenu( int iMenu );
@@ -105,8 +103,6 @@ private:
     int m_iGotAllMOTD;
     
     char m_sMapName[64];
-
-    int m_iCurrentMenu;
 };
 
 extern CImGuiViewport &g_ImGuiViewport;
